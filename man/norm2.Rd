@@ -7,14 +7,14 @@
 norm2(u)
 }
 \arguments{
-\item{u}{A vector of numerics}
+\item{u}{A vector of numerics.}
 }
 \value{
-The l2 norm of \eqn{u}: \eqn{\sqrt{\sum_i u_i^2}}.
+The weighted l2 norm of \eqn{u}: \eqn{\sqrt{\sum_i w_i u_i^2}}.
 }
 \description{
 Compute the l2 norm of a vector.
 }
 \examples{
-norm2( c(0, 0, -0.5, 0.5) )
+norm2(c(0, 0,-0.5, 0.5))
 }

@@ -5,9 +5,9 @@
 \title{Groups sparse Generalized SVD of a matrix}
 \usage{
 ggcsvd(X, R = 2, au = rep(sqrt(nrow(X)), R), av = rep(sqrt(ncol(X)),
-  R), Wu = rep(1, NROW(X)), Wv = rep(1, NCOL(X)), Gu = seq(NROW(X)),
-  Gv = seq(NCOL(X)), itermax.pi = 1000, itermax.pocs = 1000,
-  eps.pi = 1e-16, eps.pocs = 1e-16, init = "svd", order_sv = TRUE)
+  R), Gu = seq(NROW(X)), Gv = seq(NCOL(X)), itermax.pi = 1000,
+  itermax.pocs = 1000, eps.pi = 1e-16, eps.pocs = 1e-16,
+  init = "svd", order_sv = TRUE)
 }
 \arguments{
 \item{X}{a (data) matrix;}
@@ -23,10 +23,6 @@ is the same as the result of a regular SVD.}
 (>0) of the $L_1$ balls for each right vector.
 Default to the maximum possible radius, such that the result
 is the same as the result of a regular SVD.}
-
-\item{Wu}{a vector containing the weights for the lines.}
-
-\item{Wv}{a vector containing the weights for the columns.}
 
 \item{Gu}{a vector describing the groups for the lines.}
 

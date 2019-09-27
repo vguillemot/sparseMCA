@@ -4,14 +4,14 @@
 \alias{projgroup}
 \title{Compute the projection of a vector onto the l1 ball.}
 \usage{
-projgroup(v, g, a)
+projgroup(v, a, g)
 }
 \arguments{
 \item{v}{A vector of numerics}
 
-\item{g}{A factor describing the groups}
-
 \item{a}{The radius (>0) of the l1 ball}
+
+\item{g}{A vector of groups}
 }
 \value{
 The projection of \eqn{v} onto the l1 ball of radius \eqn{a}.
@@ -20,5 +20,5 @@ The projection of \eqn{v} onto the l1 ball of radius \eqn{a}.
 Compute the projection of a vector onto the l1 ball.
 }
 \examples{
-projl1(1:10, 21)
+projgroup(1:10, rep(1:2, e=5), 3)
 }

@@ -2,34 +2,20 @@
 #'
 #' @param v A vector of numerics
 #' @param a The radius (>0) of the l1 ball
-#' @param g A factor describing the groups
+#' @param g A vector of groups
 #' @return The projection of \eqn{v} onto the l1 ball of radius \eqn{a}.
-#' @examples 
-#' projl1(1:10, 21)
+#' @examples
+#' projgroup(1:10, rep(1:2, e=5), 3)
 #' @export
-projgroup <- function(v, g, a) {
-  if (normgroup(v, g) <= a) return(v)
-  # vecnormg <- tapply(v, g, FUN = norm2)
-  vnormg <- ave(v, g, FUN=norm2)
-  vv <- ifelse(vnormg==0, 0, vv / vnormg)
-  nu <- sort(abs(tapply))
-  ifelse(vecnormg == 0, )
-  v <- sort(abs())
-  
-  
-  u <- sort(abs(v), decreasing = TRUE)
-  n <- length(v)
-  ukmaok <- (cumsum(u)-a)/(1:n)
-  K <- max(which(ukmaok < u))
-  tau <- ukmaok[K]
-  # print(K)
-  return(sign(v)*pmax(abs(v)-tau, 0))
-}
-
-proxl1l2 <- function(u, g, a) {
-  zenormg <- ave(u, g, FUN=norm2)
-  boolu <- (zenormg >= a) + 0
-  shrinku <- (1 - a/zenormg) * u
-  return(boolu * shrinku)
+projgroup <- function(v, a, g) {
+  y <- tapply(x, g, norm2)
+  if (r == 1) {
+    gmax <- unique(g)[which.max(y)]
+    res <- x
+    res[g != gmax] <- 0
+    return(normalize(res))
+  }
+  res.proj <- projl1l2(y, r)
+  return(projl2(proxg(x, g, res.proj$lambda)))
 }
 

@@ -18,5 +18,5 @@ The \eqn{l_{1,2}} group norm of \eqn{u}: \eqn{\sum_g ||u_g||_2}.
 Compute the l1,2 group norm of a vector.
 }
 \examples{
-normgroup( c(0, 0, -0.5, 0.5), gl(2, 2) )
+normgroup(c(0, 0,-0.5, 0.5), gl(2, 2))
 }

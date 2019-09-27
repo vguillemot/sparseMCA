@@ -10,8 +10,6 @@
 #' (>0) of the $L_1$ balls for each right vector.
 #' Default to the maximum possible radius, such that the result
 #' is the same as the result of a regular SVD.
-#' @param Wu a vector containing the weights for the lines.
-#' @param Wv a vector containing the weights for the columns.
 #' @param Gu a vector describing the groups for the lines.
 #' @param Gv a vector describing the groups for the columns.
 #' @param itermax.pi The maximum number of iterations for the power iteration.
@@ -35,8 +33,6 @@ ggcsvd <- function(X,
                    R = 2,
                    au = rep(sqrt(nrow(X)), R),
                    av = rep(sqrt(ncol(X)), R),
-                   Wu = rep(1, NROW(X)),
-                   Wv = rep(1, NCOL(X)),
                    Gu = seq(NROW(X)),
                    Gv = seq(NCOL(X)),
                    itermax.pi = 1000,
@@ -82,7 +78,6 @@ ggcsvd <- function(X,
   res.powit1 <- powit1(X,
                        U0[,1,drop=FALSE], V0[,1,drop=FALSE],
                        au[1], av[1],
-                       Wu, Wv,
                        Gu, Gv,
                        eps.pi,
                        itermax.pi)
@@ -97,7 +92,6 @@ ggcsvd <- function(X,
                            U0[,r], V0[,r],           # initialization vectors
                            U[,1:(r-1),drop=FALSE], V[,1:(r-1),drop=FALSE], # orth constraint
                            au[r], av[r],             # sparsity constrain
-                           Wu, Wv,                   # weights
                            Gu, Gv,                   # groups
                            eps.pi, eps.pocs,         # precision
                            itermax.pi, itermax.pocs) # max iteration

@@ -10,11 +10,11 @@ norm1(u)
 \item{u}{A vector of numerics}
 }
 \value{
-The \eqn{l_1} norm of \eqn{u}: \eqn{\sum_i |u_i|}.
+The \eqn{l_1} norm of \eqn{u}: \eqn{\sum_i w_i |u_i|}.
 }
 \description{
 Compute the l1 norm of a vector.
 }
 \examples{
-norm1( c(0, 0, -0.5, 0.5) )
+norm1(c(0, 0,-0.5, 0.5))
 }

@@ -2,13 +2,12 @@
 #'
 #' @param v A vector of numerics
 #' @param a The radius (>0) of the l1 ball
-#' @param w A (positive) scalar or a vector of (positive) weights that has the same length as u. By default equal to 1.
 #' @return The projection of \eqn{v} onto the l1 ball of radius \eqn{a}.
 #' @examples
 #' projl1(1:10, 21)
 #' @export
-projl1 <- function(v, a, w = 1) {
-  v <- v * w
+projl1 <- function(v, a) {
+  v <- v
   if (norm1(v) <= a)
     return(v)
   u <- sort(abs(v), decreasing = TRUE)

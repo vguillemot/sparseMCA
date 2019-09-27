@@ -1,17 +1,16 @@
-#' Compute the weighted projection of a vector onto the intersection of the l1 ball
+#' Compute the projection of a vector onto the intersection of the l1 ball
 #' and the l2 ball.
 #'
 #' @param x A vector of numerics
 #' @param a The radius (>0) of the l1 ball
-#' @param w A (positive) scalar or a vector of (positive) weights that has the same length as u. By default equal to 1.
 #' @return The "projection" of \eqn{x} onto \eqn{B_1(a) \cap B_2}.
 #' @examples
 #' proj12(1:10, 21)
 #' @export
-projl112 <- function(x, a = 1, w = 1) {
+projl112 <- function(x, a = 1) {
   # set.seed(1)
   # Check if constraints are already satisfied
-  norm2_x <- norm2(x, w)
+  norm2_x <- norm2(x)
   if ( norm2_x < 1e-32 ) return(list(x=x))
   if (sum(abs(x / norm2_x)) <= a)
     return(list(x = x / norm2_x, k = NaN))
@@ -79,6 +78,6 @@ projl112 <- function(x, a = 1, w = 1) {
   }
   # Compute lambda and the soft tresholded vector to return
   lambda <- a_k - (a * sqrt((k - psi_a_k ^ 2) / (k - a ^ 2)) - psi_a_k) * (s_1 + s_low_1 - k * a_k) / (psi_a_k * (k))
-  x_soft <- sign(w * x) * pmax(0, abs(w * x) - lambda)
-  return(list(x = x_soft / norm2(x_soft, w) , k = NaN))
+  x_soft <- sign(x) * pmax(0, abs(x) - lambda)
+  return( list(x=x_soft / norm2(x_soft) , lambda = lambda, k=iter) )
 }
