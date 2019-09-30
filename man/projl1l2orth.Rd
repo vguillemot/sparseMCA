@@ -26,5 +26,5 @@ Compute the projection of a vector onto the intersection of the l1 ball,
 the l2 ball and the space orthogonal to M.
 }
 \examples{
-projl1l2orth(1:10, a=10, M=normalize(rnorm(10)))
+projl1l2orth(1:10, a=10, M=projl1l2(rnorm(10))$x)
 }

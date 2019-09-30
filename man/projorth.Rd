@@ -2,7 +2,7 @@
 % Please edit documentation in R/projorth.R
 \name{projorth}
 \alias{projorth}
-\title{Compute the projection of a vector onto the space orthogonal to a given 
+\title{Compute the projection of a vector onto the space orthogonal to a given
 matrix.}
 \usage{
 projorth(x, M)
@@ -16,9 +16,9 @@ projorth(x, M)
 The projection of \eqn{x} onto \eqn{V^\perp}.
 }
 \description{
-Compute the projection of a vector onto the space orthogonal to a given 
+Compute the projection of a vector onto the space orthogonal to a given
 matrix.
 }
 \examples{
-projorth(1:10, normalize(rnorm(10)))
+projorth(1:10, projl2(rnorm(10)))
 }

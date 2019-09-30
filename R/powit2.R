@@ -22,9 +22,9 @@ powit2 <- function(X, U0, V0, Uorth, Vorth, au, av, Gu, Gv, eps.pi, eps.pocs, it
   uold <- unew <- U0
   vold <- vnew <- V0
   for (iter in 1:itermax.pi) {
-    vnew <- projgrouporth(t(X) %*% uold, a=av, M=Vorth, Gv,
+    vnew <- projgrouporth(x=t(X) %*% uold, r=av, g=Gv, M=Vorth,
                        itermax = itermax.pocs, eps = eps.pocs)$x
-    unew <- projgrouporth(X %*% vnew, a=au, M=Uorth, Gu,
+    unew <- projgrouporth(x=X %*% vnew, r=au, g = Gu, M=Uorth,
                        itermax = itermax.pocs, eps = eps.pocs)$x
     if ( norm2(vnew - vold) < eps.pi && norm2(unew - uold) < eps.pi ) break
     vold <- vnew

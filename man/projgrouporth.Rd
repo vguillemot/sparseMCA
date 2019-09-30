@@ -5,14 +5,15 @@
 \title{Compute the projection of a vector onto the intersection of the
 group l1-l2 ball, the l2 ball and the space orthogonal to M.}
 \usage{
-projgrouporth(x, g, a = 1, M, itermax = 5000, eps = 1e-16)
+projgrouporth(x = x, r = 1, g = g, M = M, itermax = 5000,
+  eps = 1e-16)
 }
 \arguments{
 \item{x}{A vector of numerics}
 
-\item{g}{Vector of groups.}
+\item{r}{The radius (>0) of the l1 ball}
 
-\item{a}{The radius (>0) of the l1 ball}
+\item{g}{Vector of groups.}
 
 \item{M}{A matrix of vectors}
 
@@ -28,5 +29,5 @@ Compute the projection of a vector onto the intersection of the
 group l1-l2 ball, the l2 ball and the space orthogonal to M.
 }
 \examples{
-proj12orth(1:10, a=10, M=normalize(rnorm(10)))
+projgrouporth(x=1:10, r=10, g = 1:10, M=projl2(rnorm(10)))
 }

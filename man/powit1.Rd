@@ -7,6 +7,8 @@
 powit1(X, U0, V0, au, av, Gu, Gv, eps.pi, itermax.pi)
 }
 \arguments{
+\item{X}{Matrix to decompose}
+
 \item{itermax.pi}{}
 }
 \description{

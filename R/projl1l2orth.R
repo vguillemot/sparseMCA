@@ -8,19 +8,15 @@
 #' @param eps Precision
 #' @return The projection of \eqn{x} onto \eqn{B_1(a) \cap B_2 \cap M^\perp}.
 #' @examples
-#' projl1l2orth(1:10, a=10, M=normalize(rnorm(10)))
+#' projl1l2orth(1:10, a=10, M=projl1l2(rnorm(10))$x)
 #' @export
 projl1l2orth <- function(x, a=1, M, itermax=5000, eps=1e-16) {
   xold <- xnew <- x
   for (k in 1:itermax) {
     if (is.null(M)) {
-      xnew <- proj12(xold, a=a)$x
-      # xnew <- projl1(normalize(xold), a=a)
-      # xnew <- 1/2 * ( projl1(xold, a=a) + normalize(xold) )
+      xnew <- projl1l2(xold, a=a)$x
     } else {
-      xnew <- proj12(projorth(xold, M), a=a)$x
-      # xnew <- projl1(projorth(normalize(xold), M), a=a)
-      # xnew <- 1/3 * ( projl1(xold, a=a) + normalize(xold) + projorth(xold, M) )
+      xnew <- projl1l2(projorth(xold, M), a=a)$x
     }
     if ( norm2(xnew - xold) < eps ) break
     xold <- xnew

@@ -2,26 +2,22 @@
 #' group l1-l2 ball, the l2 ball and the space orthogonal to M.
 #'
 #' @param x A vector of numerics
-#' @param a The radius (>0) of the l1 ball
+#' @param r The radius (>0) of the l1 ball
 #' @param g Vector of groups.
 #' @param M A matrix of vectors
 #' @param itermax The maximum number of iterations
 #' @param eps Precision
 #' @return The projection of \eqn{x} onto \eqn{B_1(a) \cap B_2 \cap M^\perp}.
 #' @examples
-#' proj12orth(1:10, a=10, M=normalize(rnorm(10)))
+#' projgrouporth(x=1:10, r=10, g = 1:10, M=projl2(rnorm(10)))
 #' @export
-projgrouporth <- function(x, g, a=1, M, itermax=5000, eps=1e-16) {
+projgrouporth <- function(x=x, r=1, g=g, M=M, itermax=5000, eps=1e-16) {
   xold <- xnew <- x
   for (k in 1:itermax) {
     if (is.null(M)) {
-      xnew <- projgroup(xold, g, a=a)$x
-      # xnew <- projl1(normalize(xold), a=a)
-      # xnew <- 1/2 * ( projl1(xold, a=a) + normalize(xold) )
+      xnew <- projgroup(x=xold, r=r, g=g)
     } else {
-      xnew <- projgroup(projorth(xold, M), g, a=a)$x
-      # xnew <- projl1(projorth(normalize(xold), M), a=a)
-      # xnew <- 1/3 * ( projl1(xold, a=a) + normalize(xold) + projorth(xold, M) )
+      xnew <- projgroup(x=projorth(x=xold, M), r=r, g=g)
     }
     if ( norm2(xnew - xold) < eps ) break
     xold <- xnew
